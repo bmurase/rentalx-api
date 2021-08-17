@@ -1,18 +1,18 @@
-import ICreateCategoryDTO from '../dtos/CreateCategoryDTO';
-import ICategoriesRepository from '../repositories/ICategoriesRepository';
+import ICreateSpecificationDTO from '../dtos/ICreateSpecificationDTO';
+import ISpecificationsRepository from '../repositories/ISpecificationsRepository';
 
 class CreateSpecificationService {
-    constructor(private categoriesRepository: ICategoriesRepository) {}
+    constructor(private specificationsRepository: ISpecificationsRepository) {}
 
-    public execute({ name, description }: ICreateCategoryDTO): void {
-        const categoryAlreadyExists =
-            this.categoriesRepository.findByName(name);
+    public execute({ name, description }: ICreateSpecificationDTO): void {
+        const specificationAlreadyExists =
+            this.specificationsRepository.findByName(name);
 
-        if (categoryAlreadyExists) {
-            throw new Error('Category already exists');
+        if (specificationAlreadyExists) {
+            throw new Error('Specification already exists');
         }
 
-        this.categoriesRepository.create({ name, description });
+        this.specificationsRepository.create({ name, description });
     }
 }
 

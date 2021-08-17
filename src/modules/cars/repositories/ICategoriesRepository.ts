@@ -1,4 +1,4 @@
-import ICreateCategoryDTO from '../dtos/CreateCategoryDTO';
+import ICreateCategoryDTO from '../dtos/ICreateCategoryDTO';
 import { Category } from '../models/Category';
 
 export default interface ICategoriesRepository {
