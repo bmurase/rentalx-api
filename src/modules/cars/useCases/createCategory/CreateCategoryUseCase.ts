@@ -1,5 +1,5 @@
+import ICreateCategoryDTO from '../../dtos/ICreateCategoryDTO';
 import ICategoriesRepository from '../../repositories/ICategoriesRepository';
-import ICreateCategoryDTO from './ICreateCategoryDTO';
 
 class CreateCategoryUseCase {
     constructor(private categoriesRepository: ICategoriesRepository) {}
