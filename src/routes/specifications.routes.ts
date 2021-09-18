@@ -4,9 +4,12 @@ import { SpecificationsRepository } from '../modules/cars/repositories/implement
 import { createSpecificationController } from '../modules/cars/useCases/createSpecification';
 
 const specificationsRouter = Router();
+
 const specificationsRepository = SpecificationsRepository.getInstance();
 
-specificationsRouter.post('/', createSpecificationController.handle);
+specificationsRouter.post('/', (request, response) => {
+    return createSpecificationController.handle(request, response);
+});
 
 specificationsRouter.get('/', (request, response) => {
     const specifications = specificationsRepository.index();
