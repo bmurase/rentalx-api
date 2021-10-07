@@ -1,5 +1,6 @@
 node_modules
 ormconfig.json
+.idea
 
 tmp/avatar/*
 !tmp/avatar/.gitkeep
