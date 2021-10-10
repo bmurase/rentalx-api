@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '../../../../shared/errors/AppError';
 import ICreateSpecificationDTO from '../../dtos/ICreateSpecificationDTO';
 import ISpecificationsRepository from '../../repositories/ISpecificationsRepository';
 

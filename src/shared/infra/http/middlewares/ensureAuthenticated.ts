@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import { AppError } from '../errors/AppError';
-import { UsersRepository } from '../modules/accounts/repositories/implementations/UsersRepository';
+import { UsersRepository } from '../../../../modules/accounts/infra/typeorm/repositories/UsersRepository';
+import { AppError } from '../../../errors/AppError';
 
 interface IPayload {
     sub: string;
@@ -10,7 +10,9 @@ interface IPayload {
 
 export async function ensureAuthenticated(
     request: Request,
+
     response: Response,
+
     next: NextFunction
 ): Promise<void> {
     const authHeader = request.headers.authorization;
@@ -24,10 +26,12 @@ export async function ensureAuthenticated(
     try {
         const { sub: user_id } = verify(
             token,
+
             'dss65afcvs2daf8c64x8s964gnsdg'
         ) as IPayload;
 
         const usersRepository = new UsersRepository();
+
         const user = await usersRepository.findById(user_id);
 
         if (!user) {
