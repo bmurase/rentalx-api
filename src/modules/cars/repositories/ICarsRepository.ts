@@ -9,4 +9,5 @@ export default interface ICarsRepository {
         brand?: string,
         category_id?: string
     ): Promise<Car[]>;
+    findById(id: string): Promise<Car>;
 }
