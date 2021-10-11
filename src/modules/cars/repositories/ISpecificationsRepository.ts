@@ -5,4 +5,5 @@ export default interface ISpecificationsRepository {
     create(data: ICreateSpecificationDTO): Promise<void>;
     index(): Promise<Specification[]>;
     findByName(name: string): Promise<Specification>;
+    findMany(ids: string[]): Promise<Specification[]>;
 }
