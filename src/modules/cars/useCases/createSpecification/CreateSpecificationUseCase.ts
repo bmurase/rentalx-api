@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '../../../../shared/errors/AppError';
 import ICreateSpecificationDTO from '../../dtos/ICreateSpecificationDTO';
+import { Specification } from '../../infra/typeorm/entities/Specification';
 import ISpecificationsRepository from '../../repositories/ISpecificationsRepository';
 
 @injectable()
@@ -14,7 +15,7 @@ class CreateSpecificationUseCase {
     public async execute({
         name,
         description,
-    }: ICreateSpecificationDTO): Promise<void> {
+    }: ICreateSpecificationDTO): Promise<Specification> {
         const specificationAlreadyExists =
             await this.specificationsRepository.findByName(name);
 
@@ -22,7 +23,12 @@ class CreateSpecificationUseCase {
             throw new AppError('Specification already exists');
         }
 
-        await this.specificationsRepository.create({ name, description });
+        const specification = await this.specificationsRepository.create({
+            name,
+            description,
+        });
+
+        return specification;
     }
 }
 
