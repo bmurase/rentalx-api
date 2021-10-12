@@ -2,5 +2,11 @@ node_modules
 ormconfig.json
 .idea
 
+tmp/*
+tmp/cars/*
 tmp/avatar/*
+
+!tmp/cars
+!tmp/avatar
 !tmp/avatar/.gitkeep
+!tmp/cars/.gitkeep
